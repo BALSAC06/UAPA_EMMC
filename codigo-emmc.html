@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Manufactura Aditiva - UAPA</title>
+
+<!-- Fuente Maryweather -->
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
+
+<style>
+    body{
+        font-family: 'Merriweather', serif;
+        margin:0;
+        background-color: #003b5c;
+        color:#222;
+        line-height:1.6;
+        background-image: url('EMMC/fondo.gif');
+    }
+    header{
+        background-image: url('EMMC/fondo.gif');
+        background-position: center;
+        color:rgb(255, 234, 4);
+        padding:120px;
+        text-align:center;
+        font-size: 40px;
+    }
+    h1,h2,h3{
+        font-weight:700;
+    }
+    .container{
+        width:85%;
+        margin:auto;
+        padding:20px 0;
+    }
+
+    /* -------------------- MENÚ DERECHA -------------------- */
+        nav.menu {
+            display: flex;
+            justify-content: flex-end;
+            gap: 40px;
+            padding: 20px 40px;
+            background: rgb(201, 199, 199);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        nav.menu a {
+            text-decoration: none;
+            color: var(--gris-texto);
+            padding: 10px 15px;
+            font-size: 18px;
+            font-weight: 400;
+            position: relative;
+            transition: 0.2s ease;
+        }
+
+        nav.menu a:hover {
+            background: #f4f4f4;
+        }
+
+        nav.menu a.activo::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -3px;
+            width: 100%;
+            height: 3px;
+            background: var(--rojo-linea);
+        }
+
+
+    /* INDICE */
+    .indice{
+        background:#fff;
+        padding:20px;
+        border-radius:10px;
+        box-shadow:0 3px 10px rgba(0,0,0,0.1);
+        margin-bottom:25px;
+    }
+    .indice a{
+        text-decoration:none;
+        color:#003b5c;
+        display:block;
+        margin:8px 0;
+        font-weight:700;
+    }
+
+    /* CAROUSEL */
+    .carousel-box{
+        background:#fff;
+        padding:20px;
+        border-radius:10px;
+        box-shadow:0 3px 10px rgba(0,0,0,0.1);
+        margin-bottom:3px;
+        
+    }
+  .carousel-img{
+    width:100%;
+    height:400px;
+    object-fit:cover;
+    border-radius:10px;
+    margin-bottom:15px;
+}
+    .carousel-controls{
+        display:flex;
+        justify-content:space-between;
+    }
+    .carousel-controls button{
+        padding:10px 20px;
+        background:#003b5c;
+        color:#fff;
+        border:none;
+        border-radius:8px;
+        cursor:pointer;
+    }
+
+    /* TABLAS */
+    table{
+        width:100%;
+        border-collapse:collapse;
+        margin:20px 0;
+        background:#fff;
+        box-shadow:0 3px 10px rgba(0,0,0,0.1);
+    }
+    th,td{
+        padding:12px;
+        border:1px solid #ddd;
+    }
+    th{
+        background:#003b5c;
+        color:white;
+    }
+
+    /* DESPLEGABLES */
+    details{
+        background:white;
+        padding:15px 20px;
+        margin:20px 0;
+        border-radius:10px;
+        box-shadow:0 3px 10px rgba(0,0,0,0.12);
+        cursor:pointer;
+        transition:0.3s;
+    }
+    details:hover{
+        transform:scale(1.01);
+    }
+    summary{
+        font-weight:700;
+        font-size:18px;
+        color:#003b5c;
+    }
+
+    /* CUESTIONARIO */
+    .question{
+        background:#eef4f9;
+        padding:15px;
+        border-radius:10px;
+        margin-bottom:15px;
+    }
+    .btn-check{
+        background:#003b5c;
+        color:white;
+        padding:10px 20px;
+        border:none;
+        border-radius:8px;
+        cursor:pointer;
+        margin-top:10px;
+    }
+
+    /* EJERCICIO ORDENAR */
+    #ordenar-container{
+        background:#fff;
+        padding:20px;
+        border-radius:10px;
+        box-shadow:0 3px 10px rgba(0,0,0,0.1);
+    }
+    .draggable{
+        padding:12px;
+        background:#d7e9ff;
+        border:1px solid #aac8ff;
+        border-radius:8px;
+        margin:8px 0;
+        cursor:grab;
+        font-weight:700;
+    }
+    .dropzone{
+        min-height:200px;
+        padding:15px;
+        border:2px dashed #003b5c;
+        border-radius:10px;
+        background:#f1f8ff;
+    }
+    #btn-check-order{
+        margin-top:15px;
+        padding:10px 20px;
+        background:#003b5c;
+        color:white;
+        border:none;
+        border-radius:8px;
+        cursor:pointer;
+    }
+
+    
+/* Estilo del desplegable */
+.details-box {
+    border: 2px solid #004b8d;
+    border-radius: 10px;
+    padding: 10px;
+    background: #f5faff;
+    font-family: Arial, sans-serif;
+}
+
+ summary {
+    font-weight: bold;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+/* Contenedor del cuestionario */
+.question-box {
+    padding: 15px;
+    margin-top: 10px;
+    border-radius: 10px;
+    transition: 0.3s ease;
+}
+
+/* Respuestas */
+.option {
+    margin: 8px 0;
+    padding: 8px;
+    border: 1px solid #777;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.option:hover {
+    background: #e0ecff;
+}
+
+/* Colores de retroalimentación */
+.correct {
+    background: #c2f7c2 !important;
+    border-color: #2e8b57 !important;
+}
+
+.incorrect {
+    background: #f7c2c2 !important;
+    border-color: #8b0000 !important;
+}
+
+/* Procedimiento */
+#procedure {
+    margin-top: 15px;
+    padding: 12px;
+    background: #fff7d9;
+    border-left: 4px solid #c97d00;
+    border-radius: 6px;
+    display: none;
+}
+
+</style>
+</head>
+<body>
+
+<header>
+    
+    <h1>Ecuaciones constitutivas simples: fluidos  ideales  y fluidos viscosos</h1>
+    <p>Elementos de Mecánica del Medio Continuo</p>
+    <p>Termofluidos</p>
+</header>
+
+<nav class="menu">
+        <a href="#Indice" class="activo">Índice</a>
+        <a href="#intro">Introducción</a>
+        <a href="#proceso">Contenido</a>
+        <a href="#cuestionario">Actividades</a>
+        <a href="#fuentes">Fuentes</a>
+    </nav>
+
+<div class="container">
+
+<!-- INDICE -->
+<div class="indice">
+    <h2 id="Indice">Indice</h2>
+    <a href="#intro">1. Introducción</a>
+    <a href="#proceso">2. ¿Qué son las Ecuaciones de Conservación en Mecánica del Medio Continuo?</a>
+    <a href="#Concepto y Clasificación de la Manufactura Aditiva">3. Concepto y Clasificación de la Manufactura Aditiva</a>
+    <a href="#Tecnologías Principales">4. Tecnologías Principales</a>
+    <a href="#Materiales Utilizados">5. Materiales Utilizados</a>
+    <a href="#ventajas">6. Ventajas y Limitaciones</a>
+    <a href="#aplicaciones">7. Aplicaciones</a>
+    <a href="#cuestionario">8. Cuestionario interactivo</a>
+    <a href="#ejercicio2">9. Ejercicio de ordenación</a>
+    <a href="#fuentes">10. Fuentes de consulta</a>
+</div>
+
+<!-- INTRO -->
+<div class="indice">
+    <h2 id="intro">1. Introducción</h2>
+    <p>En la mecánica del medio continuo, las ecuaciones constitutivas desempeñan un papel fundamental, ya que permiten describir cómo responde un
+       material ante la acción de fuerzas externas, estableciendo la relación entre los esfuerzos y las deformaciones o tasas de deformación. En el
+        caso de los fluidos, estas ecuaciones son esenciales para predecir su comportamiento dinámico, modelar su movimiento y resolver las ecuacion
+        es de conservación que gobiernan su flujo. </p>
+    <p>Entre los modelos constitutivos más básicos y ampliamente utilizados se encuentran los correspondientes a fluidos ideales y fluidos viscosos.
+       Los primeros representan un caso límite en el cual se asume la ausencia total de viscosidad, de modo que no existen esfuerzos cortantes en el
+        fluido durante su movimiento. Este modelo, aunque no describe a ningún fluido real, es fundamental en la formulación teórica de la dinámica de
+         fluidos, ya que simplifica significativamente las ecuaciones de movimiento y permite comprender fenómenos como flujos inviscidos, circulación,
+          irrotacionalidad y ondas. </p>
+    <p>Por otro lado, los fluidos viscosos incorporan los efectos reales de fricción interna, que se manifiestan cuando existen gradientes de 
+      velocidad dentro del fluido. El modelo constitutivo clásico para estos fluidos es el formulado por Newton, el cual establece que el esfuerzo
+       cortante es proporcional a la tasa de deformación. Este comportamiento caracteriza a los llamados fluidos newtonianos —como el agua, el aire
+        o el aceite— y constituye la base para la deducción de las ecuaciones de Navier–Stokes, piedra angular de la mecánica de fluidos.</p>
+    <p>El estudio conjunto de estos modelos, ideal y viscoso, permite comprender cómo las propiedades intrínsecas de los fluidos influyen en su 
+      movimiento y en la distribución de los esfuerzos internos, proporcionando herramientas teóricas indispensables para resolver problemas de 
+      ingeniería, física aplicada y ciencias naturales.</p>   
+</div>
+
+<!-- ¿Qué son las Ecuaciones de Conservación en Mecánica del Medio Continuo? -->
+<div class="indice">
+    <h2 id="proceso"><b>2. Ecuaciones constitutivas</b></h2>
+    <p>Las ecuaciones constitutivas describen cómo reacciona un material ante las cargas externas. Son necesarias porque las ecuaciones de conservación contienen más incógnitas que ecuaciones, y por lo tanto requieren relaciones adicionales para cerrarse.</p>
+    <h2>Principio de determinismo</h2>
+    <p>Postula que, una vez conocido el sistema de fuerzas que actúan sobre un punto material y su posición y velocidad en un instante dado, el movimiento del punto está perfectamente determinado en todos los instantes posteriores. Este principio es una consecuencia matemática de la ley de Newton y se aplica a la mecánica clásica</p>
+    <h2>Principio de acción local</h2>
+    <P>Postula que el esfuerzo en un punto depende exclusivamente del estado de deformación o de su tasa en ese mismo punto, sin influencia directa de regiones alejadas.</P>
+    <h2>Ecuaciones constitutivas lineales</h2>
+    <p>Son aquellas en las que la relación entre esfuerzos y deformaciones es proporcional.</p>
+    <p>Ejemplos:</p>
+    <table>
+        <tr><th>Material</th><th>Ecuación constitutiva</th></th><th>Descripción</th></tr>
+        <td>Sólido Elástico lineal</td><td><h2>$$ \ σ_{ij} = C_{ijkl​ε_{kl}}$$</h2></td><td>Ley de Hooke Generalizada</td></tr>
+        <td>Fluido Viscoso Newtoniano</td><td><h2>$$ \ τ_{ij}​=2μD_{ij} $$</h2></td><td>Esfuerzos cortantes proporcionales a la tasa de deformación</td></tr>
+    </table> 
+    
+</div> 
+
+<!-- Ecuación de Conservación de la Masa (Continuidad) -->
+<div class="indice"> 
+    <h2 id="Concepto y Clasificación de la Manufactura Aditiva">3. El fluido ideal</h2>
+    <p>Un fluido se caracteriza por:</p>
+    
+    <p><b>1) Viscosidad nula (𝜇=0)</b></p>
+    <p><b>2) Ausencia de esfuerzos cortantes</b></p>
+    <p><b>3) No hay disipación de energía</b></p>
+    <p><b>4) Solo actúa la presión</b></p>
+    <p>Esto permite simplificar significativamente las ecuaciones de conservación.</p>
+    
+    <h2>ECUACIONES DE EULER</h2>
+    <p>Al eliminar la viscosidad de las ecuaciones de movimiento se obtiene:</p>
+    <p><h2>$$\rho (\frac{\partial v}{\partial t} + v⋅∇v)= -\nabla p + \rho f $$</h2></p>
+    <table>
+        <tr><th>Variable</th><th>Descripción</th></tr>
+        <tr><td><h2>$$ \ ρ$$</h2></td><td>Densidad </td></tr>
+        <tr><td><h2>$$ \ v$$</h2></td><td>Velocidad</td></tr>
+        <tr><td><h2>$$ \ f $$⋅</h2></td><td>Fuerzas de cuerpo</td></tr>
+        <tr><td><h2>$$ \frac{\partial }{\partial t}$$⋅</h2></td><td>Derivada parcial respecto al tiempo</td></tr>
+        <tr><td><h2>$$\ p$$</h2></td><td>Presión</td></tr>
+      </table> 
+
+   <h2>Flujo irrotacional</h2>
+   <p>Se refiere a un tipo de flujo en el que las partículas de fluido no 
+    tienen rotación alrededor de sus propios ejes, lo que resulta en una vorticidad nula.</p>
+    <P>El flujo irrotacional se caracteriza porque un elemento de fluido en cada punto del espacio no presenta velocidad angular respecto a ese punto. Esto significa que, a lo largo de las trayectorias del flujo, las partículas de fluido se mueven sin girar sobre sí mismas.</P>
+    <p>Un flujo es irrotacional si:</p>
+    <P><h2>$$ \ {\nabla} × v = 0 $$</h2></P>
+    <p>Entonces existe un potencial de velocidad</p>
+    <p><h2> $$\ v = \nabla ϕ $$</h2></p>
+    <p>En un flujo irrotacional, la vorticidad es cero, lo que implica que el rotacional del campo de velocidad también es cero. Esta condición es fundamental para definir el flujo irrotacional y se utiliza en diversas aplicaciones de la mecánica de fluidos, como en la formulación de ecuaciones que describen el comportamiento de fluidos ideales. </p>
+    <P></P>
+
+    <h2>Ecuación de Bernoulli</h2>
+    <p>Para un fluido ideal, incompresible y estacionario:</p>
+    <p><h2> $$\ p + \frac{1}{2} \rho g v^2 + \rho g z = cte $$</h2></p>
+    <p>Interpretación energética:</p>
+    <table>
+        <tr><th>Término</th><th>Tipo de energía</th></tr>
+        <tr><td><h2>$$ \ \frac{1}{2} \rho v^2 p$$</h2></td><td>Cinética </td></tr>
+        <tr><td><h2>$$ \ v$$</h2></td><td>Velocidad</td></tr>
+        <tr><td><h2>$$ \ \rho g z $$⋅</h2></td><td>Potencial gravitacional</td></tr>       
+      </table>      
+</div>
+
+<!-- 3. Ecuación de Conservación del Momentum (Ecuación de Cauchy) -->
+<div class="indice"> 
+    <h2 id="Concepto y Clasificación de la Manufactura Aditiva">3. Fluido viscoso incomprensible</h2>
+    <p>Un fluido viscoso incompresible es aquel que, aunque presenta viscosidad, su densidad permanece constante a lo largo del tiempo y del espacio, independientemente de las fuerzas externas o de los cambios de presión. Esto significa que el volumen del fluido no varía con la presión</p>
+    <p>Los fluidos viscosos generan esfuerzos cortantes proporcionales a la tasa de deformación. Para un fluido newtoniano:</p>
+    <h2>
+     $$
+      \tau_{ij} = 2 \mu D_{ij}
+      $$
+    </h2>
+    <p>donde $$\ D_{ij} $$ es el tensor de tasas de deformación</p>
+
+    <h2>Ecuaciones de Navier-Stokes</h2>
+    <p>Las ecuaciones de Navier-Stokes expresan matemáticamente la conservación del momento y la conservación de la masa para fluidos newtonianos. Se derivan de la aplicación de la segunda ley de Newton al movimiento de fluidos, considerando que la tensión en el fluido es la suma de un término viscoso (proporcional al gradiente de velocidad) y un término de presión. Esto permite describir el flujo viscoso de manera precisa.</p>
+    <p><h2>$$\ \rho (\frac{\partial{v}}{\partial{t}} + v⋅∇v) = -\nabla p + \mu\nabla ^2 v + \rho f$$ </h2></p> 
+    <p><b>Con la condición de incompresibilidad:</b></p>
+    <p><h2>$$ \ \nabla ⋅v = 0 $$</h2></p>
+
+    <h3>Las ecuaciones de Navier–Stokes permiten describir:</h3>
+    <img id="imgApp" class="carousel-img" src="EMMC/flujoL.png">
+        <h3 id="subApp">Flujo laminar</h3>
+        <p id="descApp">Este tipo de flujo se caracteriza por trayectorias suaves y ordenadas, lo que reduce la turbulencia y la mezcla de partículas.</p>
+
+        <div class="carousel-controls">
+            <button onclick="prevApp()">Anterior</button>
+            <button onclick="nextApp()">Siguiente</button>
+        </div>
+    </div>
+
+
+  
+
+  <!-- 4. Conservación de la Energía (Primera Ley de la Termodinámica) -->
+  <div class="indice"> 
+      <h2 id="Concepto y Clasificación de la Manufactura Aditiva">3. Ecuación de Conservación del Momentum (Ecuación de Cauchy)</h2>
+      <h2>
+      $$
+      \rho \frac{De}{Dt} = \boldsymbol{\sigma} : \nabla \vec{v} - \nabla \cdot \vec{q} + \rho r
+      $$
+
+      </h2>
+      <table>
+          <tr><th>Variable</th><th>Descripción</th></tr>
+          <tr><td><h2>$$ \ ρ$$</h2></td><td>Densidad del material (masa por unidad de volumen)</td></tr>
+          <tr><td><h2>$$ \ \frac{De}{Dt} $$</h2></td><td>Derivada material de la energía interna</td></tr>
+          <tr><td><h2>$$ \ \boldsymbol{\sigma} : \nabla \vec{v}$$</h2></td><td>Trabajo de esfuerzos internos por deformación</td></tr>
+          <tr><td><h2>$$ \ \vec{q} $$⋅</h2></td><td>Flujo de calor por conducción</td></tr>
+          <tr><td><h2>$$ \vec{b}$$</h2></td><td>Derivada parcial respecto al tiempo</td></tr>
+          <tr><td><h2>$$ \ r$$</h2></td><td>Fuente térmica por unidad de masa (generación interna de calor)</td></tr>
+          <tr><td><h2>$$ \ \nabla \cdot$$</h2></td><td>Divergencia</td></tr>
+          <tr><td><h2>$$ \ \nabla \vec{v} $$</h2></td><td>Gradiente del vector velocidad</td></tr>
+      </table> 
+  </div>
+
+  <!-- 5. Derivada Material (importante para todas) -->
+  <div class="indice"> 
+      <h2 id="Concepto y Clasificación de la Manufactura Aditiva">3. Ecuación de Conservación del Momentum (Ecuación de Cauchy)</h2>
+      <h2>
+      $$
+        \rho \frac{D\vec{v}}{Dt} = \nabla \cdot \boldsymbol{\sigma} + \rho \vec{b}
+        $$
+      </h2>
+      <table>
+          <tr><th>Variable</th><th>Descripción</th></tr>
+          <tr><td><h2>$$ \ ρ$$</h2></td><td>Densidad del material (masa por unidad de volumen)</td></tr>
+          <tr><td><h2>$$ \ \frac{D\vec{v}}{Dt} $$</h2></td><td>Tiempo</td></tr>
+          <tr><td><h2>$$ \nabla \cdot$$</h2></td><td>Vector de velocidad del material.</td></tr>
+          <tr><td><h2>$$ \rho $$⋅</h2></td><td>Divergencia (medida de flujo neto que sale de un volumen diferencial)</td></tr>
+          <tr><td><h2>$$ \vec{b}$$</h2></td><td>Derivada parcial respecto al tiempo</td></tr>
+      </table> 
+  </div>
+
+  <!-- Materiales Utilizados-->
+  <div class="indice"> 
+      <h2 id="Materiales Utilizados">5. Materiales Utilizados</h2>
+      <p>La manufactura aditiva abarca una amplia gama de materiales según el proceso:</p>
+      <table>
+          <tr><th>Tipo de material</th><th>Ejemplos</th></tr>
+          <tr><td>Polímeros</td><td>PLA, ABS, PETG, nylon, TPU.</td></tr>
+          <tr><td>Metales</td><td>Acero inoxidable, titanio, inconel, aluminio.</td></tr>
+          <tr><td>Cerámicos</td><td>Zirconia, alúmina.</td></tr>
+          <tr><td>compuestos</td><td>Filamentos reforzados con fibra de carbono o vidrio.</td></tr>
+      </table> 
+  </div>
+
+
+
+  <!-- TABLA -->
+  <div class="indice">  
+      <h2 id="ventajas">6. Ventajas y Limitaciones</h2>
+      <p> Como vimos anteriormente, existen actualmente una multitud de tecnologías de fabricación aditiva, las cuales tienen muchas ventajas, lo que abre una ventana de oportunidades para la ingeniería.:</p>
+      <p>Por el momento las cosas no son tan ideales como aparentan, puesto que los procesos de manufactura aditiva tambien tienen una serie de limitaciones las cuales deben ser consideradas, si se elige alguno de estos métodos. </p>
+
+      <table>
+          <tr><th>Ventajas</th><th>Limitaciones</th></tr>
+          <tr><td>Geometrías complejas sin costo adicional</td><td>Velocidad de fabricación relativamente baja</td></tr>
+          <tr><td>Personalización total</td><td>Limitación en materiales disponibles</td></tr>
+          <tr><td>Reducción de desperdicio</td><td>Acabados superficiales requieren post-proceso</td></tr>
+          <tr><td>Prototipado rápido</td><td>Costos altos en impresoras industriales</td></tr>
+      </table>
+  </div>
+
+  <!-- APLICACIONES -->
+  <div class="indice">  
+      <h2 id="aplicaciones">7. Aplicaciones</h2>
+      
+  </div> 
+
+  <!-- CUESTIONARIO -->
+  <div class="indice">  
+      <h2 id="cuestionario">8. Cuestionario interactivo</h2>
+
+      <details>
+      <summary>Mostrar cuestionario</summary>
+      <div id="quiz"></div>
+      <button class="btn-check" onclick="checkQuiz()">Revisar respuestas</button>
+      <p id="quizResult"></p>
+      </details>
+  </div>
+
+  <!-- EJERCICIO 2 -->
+  <div class="indice">
+  <details class="details-box">
+      <summary>Ejercicio – Resuelve y elige respuesta correcta</summary>
+
+      <div class="question-box" id="questionBox">
+          <p><b>EJERCICIO</b>  
+          Fluye un fluido con las siguientes características:
+          <p><b>flujo estacionario</b></p>
+          <p><b>flujo desarrollado</b></p>
+          <p><b>tuberia circular</b></p>
+          <p>$$\ \rho = 1000 \frac{kg}{m^3} $$ </p>
+          <p>$$\mu = 1.0 × 10^-3 Pa⋅s  $$</p>
+          <P>$$\ r = 10 mm $$</P>
+          <p>$$\ L = 1.0 m$$</p>
+          <P>$$\ \nabla p = p_{entrada} - p_{salida} = 600 Pa$$</P>
+          
+          <p><b>Selecciona la respuesta correcta:</b></p>
+
+          <div class="option" onclick="checkAnswer(this, 0)">A) $$U_{avg} = 7.5\ [mm/s]$$</div>
+          <div class="option" onclick="checkAnswer(this, 1)">B)$$U_{avg} = 7.5\ [m/s]$$</div>
+          <div class="option" onclick="checkAnswer(this, 2)">C) $$U_{avg} = 75\ [m/s]$$</div>
+          <div class="option" onclick="checkAnswer(this, 3)">D) <b>ninguna de las anteriores</b></div>
+
+          <div id="procedure">
+    <b>Resultados del inciso 1 y 2:</b><br><br>
+
+    <b>Datos:</b><br>
+    ρ = 1000 \([kg/m^3]\)<br>
+    μ = \(1\times10^{-3}\) \([Pa\cdot s]\)<br>
+    R = 10 mm = 0.01 m<br>
+    L = 1 m<br>
+    Δp = 600 Pa<br><br>
+
+    <h2>Resolviendo:</h2>
+
+    <b>1) Perfil de velocidad</b><br>
+    Partimos de la ecuación de Navier–Stokes simplificada para flujo laminar completamente desarrollado en tubería circular:<br><br>
+
+    $$\mu\frac{1}{r}\frac{d}{dr}\left(r\frac{du_z}{dr}\right) = -\frac{\Delta p}{L}$$
+
+    Integrando y aplicando la condición de no deslizamiento \(u(R)=0\):<br><br>
+
+    $$u_z(r)=\frac{\Delta p}{4\mu L}(R^2 - r^2)$$
+
+    <br>
+
+    <b>2) Velocidad máxima y velocidad media</b><br><br>
+
+    La velocidad máxima ocurre en el eje \(r=0\):<br><br>
+
+    $$u_{\max} = \frac{\Delta p}{4\mu L}R^2$$
+
+    Sustituyendo valores:<br>
+
+    $$u_{\max} = \frac{600}{4(1\times10^{-3})(1)} (0.01)^2$$
+
+    $$u_{\max} = 15\ [m/s]$$
+
+    <br>
+
+    La velocidad media es:<br><br>
+
+    $$U_{avg} = \frac{u_{\max}}{2}$$
+
+    $$U_{avg} = 7.5\ [m/s]$$
+
+</div>
+
+      </div>
+   </details>
+  </div>
+
+
+</div>
+  <!-- FUENTES -->
+  <div class="indice"> 
+      <h2 id="fuentes">10. Fuentes de consulta</h2>
+      <ul>
+          <li>MALVERN, L. E. Introduction to the Mechanics of a Continuous Medium</li>
+          <li>Gibson, Rosen & Stucker. "Additive Manufacturing Technologies". Springer.</li>
+          <li>ASTM F2792 – Standard Terminology for Additive Manufacturing</li>
+      </ul>
+
+      </div>
+  </div>
+
+</div> 
+
+<!-- JS -->
+<script>
+
+// ----------------------
+// CAROUSEL PROCESO
+// ----------------------
+const procesos = [
+    ["EMMC/masa.gif", "Conservación de la masa", "Esta ley establece que en un sistema cerrado, la masa total permanece constante durante una reacción química. Es decir, la cantidad de materia antes de la reacción es igual a la cantidad de materia después de la reacción, aunque la materia puede cambiar de forma."],
+    ["EMMC/momentum.gif", "Conservación del momentum (o cantidad de movimiento)", "La ley de conservación del momento se basa en el principio de que el momento (o cantidad de movimiento) de un sistema de objetos no cambia a menos que una fuerza externa actúe sobre él. El momento se define como el producto de la masa de un objeto por su velocidad"],
+    ["EMMC/energía.gif", "Conservación de la energía", "Establece que la energía no puede ser creada ni destruida, solo transformada de una forma a otra. Esto significa que la cantidad total de energía en un sistema aislado permanece constante a lo largo del tiempo. Este principio es fundamental en la física y se conoce también como el primer principio de la termodinámica."],
+];
+let iProceso=0;
+
+function updateProceso(){
+    document.getElementById("imgProceso").src = procesos[iProceso][0];
+    document.getElementById("subProceso").textContent=procesos[iProceso][1];
+    document.getElementById("descProceso").textContent=procesos[iProceso][2];
+}
+function nextProceso(){ iProceso=(iProceso+1)%procesos.length; updateProceso(); }
+function prevProceso(){ iProceso=(iProceso-1+procesos.length)%procesos.length; updateProceso(); }
+
+
+// ----------------------
+// CAROUSEL APLICACIONES
+// ----------------------
+const apps=[
+    ["EMMC/flujoL.png","Flujo Lamniar","Este tipo de flujo se caracteriza por trayectorias suaves y ordenadas, lo que reduce la turbulencia y la mezcla de partículas."],
+    ["EMMC/flujotu.png","Flujo Turbulento","El flujo turbulento es un tipo de movimiento de un fluido (gas o líquido) que se caracteriza por ser caótico e irregular, donde las partículas se mueven desordenadamente y se forman remolinos aperiódicos. "],
+    ["EMMC/capalim.png","Capa límite","La capa límite es la región del flujo de un fluido cerca de una superficie sólida donde los efectos de la viscosidad son significativos, y donde la velocidad del fluido cambia desde cero en la superficie hasta alcanzar la velocidad del flujo libre."],
+    ["EMMC/capa.png", "Sustentación y Arrastre", "Sustentación: Es la fuerza que actúa perpendicularmente al flujo de un fluido sobre un cuerpo, permitiendo que este se mantenga en el aire o en el agua. Se genera principalmente por diferencias de presión en las superficies del cuerpo. ","Arrastre: Es la fuerza que actúa en la dirección del flujo del fluido, oponiéndose al movimiento del cuerpo. Esta fuerza se debe a la fricción y a la presión del fluido sobre la superficie del cuerpo."]
+];
+let iApp=0;
+
+function updateApp(){
+    document.getElementById("imgApp").src =apps[iApp][0];
+    document.getElementById("subApp").textContent=apps[iApp][1];
+    document.getElementById("descApp").textContent=apps[iApp][2];
+}
+function nextApp(){ iApp=(iApp+1)%apps.length; updateApp(); }
+function prevApp(){ iApp=(iApp-1+apps.length)%apps.length; updateApp(); }
+
+// ----------------------
+// CAROUSEL Tecnologías Principales
+// ----------------------
+const Tec=[
+    ["EMMC/Flujolam.gif","FDM (Fused Deposition Modeling)","Funde un filamento termoplástico y lo deposita capa por capa. Es el método más accesible y ampliamente usado para prototipos funcionales."],
+    ["EMMC/FlujoTu.gif","SLA (Stereolithography)","Utiliza un láser UV para curar resina líquida. Destaca por su alta precisión y acabado superficial."],
+    ["EMMC/sls.gif","SLS (Selective Laser Sintering)","Usa un láser para sinterizar polvo polimérico. Permite piezas fuertes sin necesidad de soportes."],
+    ["EMMC/dmls.gif","DMLS / SLM","Es un proceso de fabricación aditiva que utiliza un láser para fusionar polvo metálico y crear piezas metálicas densas directamente a partir de modelos CAD."]
+];
+let iTec=0;
+
+function updateTec(){
+    document.getElementById("imgTec").src =Tec[iTec][0];
+    document.getElementById("subTec").textContent=Tec[iTec][1];
+    document.getElementById("descTec").textContent=Tec[iTec][2];
+}
+function nextTec(){ iTec=(iTec+1)%Tec.length; updateTec(); }
+function prevTec(){ iTec=(iTec-1+Tec.length)%Tec.length; updateTec(); }
+
+
+// ----------------------
+// CUESTIONARIO
+// ----------------------
+const preguntas = [
+    {p:"¿Qué representan las ecuaciones constitutivas en la mecánica de fluidos?", o:["Relaciones entre esfuerzo y deformación","Condiciones de frontera","Propiedades termodinámicas"], r:2},
+    {p:"Un fluido ideal se caracteriza por:", o:["No tener viscosidad","Tener alta viscosidad","Ser compresible siempre"], r:1},
+    {p:"Las ecuaciones que describen el movimiento de un fluido ideal son:", o:["Ecuaciones de Euler","Ecuaciones de Navier-Stokes","Ecuación de Bernoulli"], r:0},
+    {p:"El flujo irrotacional se define porque:", o:["La vorticidad es cero","La densidad es constante","La temperatura no cambia"], r:1},
+    {p:"La ecuación de Bernoulli aplica para:", o:["Flujo ideal estacionario","Flujo viscoso turbulento","Flujos con fuerte disipación"], r:2},
+    {p:"Un fluido viscoso incomprensible obedece:", o:["Ecuaciones de Navier-Stokes","Ecuaciones de Euler","Ley de Fourier"], r:2},
+    {p:"La viscosidad en un fluido genera:", o:["Esfuerzos cortantes","Mayor presión","Compresibilidad"], r:0},
+    {p:"Navier-Stokes incluye el efecto de:", o:["Viscosidad","Ionización","Radiación térmica"], r:0},
+    {p:"El principio de acción local en las ecuaciones constitutivas establece que:", o:["El esfuerzo depende solo de propiedades locales","El esfuerzo depende de toda la historia del material","El esfuerzo depende del campo térmico"], r:0},
+    {p:"Un ejemplo de ecuación constitutiva lineal es:", o:["Relación lineal entre esfuerzo y velocidad de deformación","Relación cuadrática del esfuerzo","Dependencia exponencial del esfuerzo"], r:0}
+];
+
+function loadQuiz(){
+    let qHtml="";
+    preguntas.forEach((q,idx)=>{
+        qHtml+=`<div class="question">
+            <p><b>${idx+1}. ${q.p}</b></p>`;
+        q.o.forEach((op,i)=>{
+            qHtml+=`<label><input type="radio" name="q${idx}" value="${i}"> ${op}</label><br>`;
+        });
+        qHtml+=`</div>`;
+    });
+    document.getElementById("quiz").innerHTML=qHtml;
+}
+loadQuiz();
+
+function checkQuiz(){
+    let correct=0;
+    preguntas.forEach((q,i)=>{
+        let sel=document.querySelector(`input[name='q${i}']:checked`);
+        if(sel && Number(sel.value)===q.r) correct++;
+    });
+    document.getElementById("quizResult").textContent=
+        `Aciertos: ${correct} de ${preguntas.length}`;
+}
+
+
+
+//...Menú..//
+const secciones = document.querySelectorAll("section[id]");
+        const links = document.querySelectorAll(".menu a");
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                const id = entry.target.getAttribute("id");
+                if (entry.isIntersecting) {
+                    links.forEach(link => link.classList.remove("activo"));
+                    const actual = document.querySelector(`.menu a[href="#${id}"]`);
+                    if (actual) actual.classList.add("activo");
+                }
+            });
+        }, {
+            threshold: 0.45
+        });
+        secciones.forEach(sec => observer.observe(sec));
+
+//Ecuaciones//
+window.MathJax = {
+  tex: {
+    inlineMath: [["$", "$"], ["\\(", "\\)"]],
+    displayMath: [["$$", "$$"], ["\\[", "\\]"]]
+  }
+};
+
+    const btn = document.getElementById("btnToggle");
+const contenedor = document.getElementById("contenedorTabla");
+
+btn.addEventListener("click", () => {
+    contenedor.classList.toggle("abierto");
+
+    if (contenedor.classList.contains("abierto")) {
+        btn.textContent = "Ocultar tabla";
+    } else {
+        btn.textContent = "Mostrar tabla";
+    }
+});
+
+function checkAnswer(optionElement, index) {
+    const correctIndex = 1; // RESPUESTA CORRECTA = opción B
+    const questionBox = document.getElementById("questionBox");
+    const procedure = document.getElementById("procedure");
+
+    // Reiniciar colores
+    document.querySelectorAll(".option").forEach(opt => {
+        opt.classList.remove("correct", "incorrect");
+    });
+
+    // Verificar respuesta
+    if (index === correctIndex) {
+        optionElement.classList.add("correct");
+        procedure.style.display = "none"; // No mostrar procedimiento si es correcta
+    } else {
+        optionElement.classList.add("incorrect");
+        procedure.style.display = "block"; // Mostrar procedimiento si es incorrecta
+    }
+}
+
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</body>
+</html>
