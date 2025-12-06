@@ -284,14 +284,14 @@
 <div class="indice">
     <h2 id="Indice">Indice</h2>
     <a href="#intro">1. Introducción</a>
-    <a href="#proceso">2. ¿Qué son las Ecuaciones de Conservación en Mecánica del Medio Continuo?</a>
-    <a href="#Concepto y Clasificación de la Manufactura Aditiva">3. Concepto y Clasificación de la Manufactura Aditiva</a>
-    <a href="#Tecnologías Principales">4. Tecnologías Principales</a>
-    <a href="#Materiales Utilizados">5. Materiales Utilizados</a>
-    <a href="#ventajas">6. Ventajas y Limitaciones</a>
-    <a href="#aplicaciones">7. Aplicaciones</a>
+    <a href="#proceso">2. Ecuaciones constitutivas</a>
+    <a href="#Concepto y Clasificación de la Manufactura Aditiva">3. El fluido ideal</a>
+    <a href="#Tecnologías Principales">4. Fluido viscoso incomprensible</a>
+    <a href="#Materiales Utilizados">5. Conservación de la Energía (Primera Ley de la Termodinámica)</a>
+    <a href="#ventajas">6. Ecuación de Conservación del Momentum (Ecuación de Cauchy)</a>
+    <a href="#aplicaciones">7. Problema: Flujo viscoso incompresible en tubería</a>
     <a href="#cuestionario">8. Cuestionario interactivo</a>
-    <a href="#ejercicio2">9. Ejercicio de ordenación</a>
+    <a href="#ejercicio2">9. Ejercicio</a>
     <a href="#fuentes">10. Fuentes de consulta</a>
 </div>
 
@@ -358,16 +358,165 @@
         <tr><td><h2>$$\ p$$</h2></td><td>Presión</td></tr>
       </table> 
 
-   <h2>Flujo irrotacional</h2>
-   <p>Se refiere a un tipo de flujo en el que las partículas de fluido no 
-    tienen rotación alrededor de sus propios ejes, lo que resulta en una vorticidad nula.</p>
-    <P>El flujo irrotacional se caracteriza porque un elemento de fluido en cada punto del espacio no presenta velocidad angular respecto a ese punto. Esto significa que, a lo largo de las trayectorias del flujo, las partículas de fluido se mueven sin girar sobre sí mismas.</P>
-    <p>Un flujo es irrotacional si:</p>
-    <P><h2>$$ \ {\nabla} × v = 0 $$</h2></P>
-    <p>Entonces existe un potencial de velocidad</p>
-    <p><h2> $$\ v = \nabla ϕ $$</h2></p>
-    <p>En un flujo irrotacional, la vorticidad es cero, lo que implica que el rotacional del campo de velocidad también es cero. Esta condición es fundamental para definir el flujo irrotacional y se utiliza en diversas aplicaciones de la mecánica de fluidos, como en la formulación de ecuaciones que describen el comportamiento de fluidos ideales. </p>
-    <P></P>
+
+<h2>Flujo irrotacional</h2>
+
+<p>Un flujo se denomina <b>irrotacional</b> cuando las partículas del fluido no presentan rotación alrededor de su propio eje. Matemáticamente, esto implica que la <b>vorticidad</b> es nula en todo el campo de velocidades.</p>
+
+<p>La vorticidad de un fluido se define como el rotacional del campo de velocidades:</p>
+
+<h2>$$ \boldsymbol{\omega} = \nabla \times \mathbf{v} $$</h2>
+
+<p>Un flujo es irrotacional si:</p>
+
+<h2>$$ \nabla \times \mathbf{v} = \mathbf{0} $$</h2>
+
+<p>Esto significa que los elementos de fluido no experimentan rotación local. En este caso, el campo de velocidad se vuelve un campo conservativo, lo que garantiza la existencia de un <b>potencial de velocidad</b>:</p>
+
+<h2>$$ \mathbf{v} = \nabla \phi $$</h2>
+
+<p>Aquí, <b>ϕ</b> es la función potencial que describe completamente el flujo.</p>
+
+<br>
+
+<h2>Condición de continuidad y ecuación de Laplace</h2>
+
+<p>Para un flujo incompresible:</p>
+
+<h2>$$ \nabla \cdot \mathbf{v} = 0 $$</h2>
+
+<p>Sustituyendo <b>v = ∇ϕ</b> se obtiene:</p>
+
+<h2>$$ \nabla^2 \phi = 0 $$</h2>
+
+<p>Lo que implica que el potencial de velocidad es una función <b>armónica</b> y debe satisfacer la ecuación de Laplace. Esto es fundamental en los modelos matemáticos de fluidos ideales.</p>
+
+<br>
+
+<h2>Desarrollo matemático del flujo irrotacional</h2>
+
+<p>Si el campo de velocidades es <b>v = (u, v, w)</b>, la vorticidad se define como:</p>
+
+<h2>
+$$
+\nabla \times \mathbf{v} = 
+\begin{pmatrix}
+\frac{\partial w}{\partial y} - \frac{\partial v}{\partial z} \\
+\frac{\partial u}{\partial z} - \frac{\partial w}{\partial x} \\
+\frac{\partial v}{\partial x} - \frac{\partial u}{\partial y}
+\end{pmatrix}
+$$
+</h2>
+
+<p>Para que el flujo sea irrotacional, cada componente debe ser igual a cero:</p>
+
+<h2>
+$$
+\frac{\partial w}{\partial y} = \frac{\partial v}{\partial z}, \qquad
+\frac{\partial u}{\partial z} = \frac{\partial w}{\partial x}, \qquad
+\frac{\partial v}{\partial x} = \frac{\partial u}{\partial y}
+$$
+</h2>
+
+<br>
+
+<h2>Función corriente en flujo 2D</h2>
+
+<p>En un flujo bidimensional e incompresible, puede definirse una función corriente:</p>
+
+<h2>
+$$
+u = \frac{\partial \psi}{\partial y}, \qquad 
+v = -\frac{\partial \psi}{\partial x}
+$$
+</h2>
+
+<p>Para flujo además irrotacional:</p>
+
+<h2>$$ \nabla^2 \psi = 0 $$</h2>
+
+<p>Tanto el potencial <b>ϕ</b> como la función corriente <b>ψ</b> cumplen la ecuación de Laplace.</p>
+
+<br>
+
+<h2>Relaciones de Cauchy–Riemann</h2>
+
+<p>En 2D, si se define la función compleja:</p>
+
+<h2>$$ F(z) = \phi(x,y) + i\,\psi(x,y) $$</h2>
+
+<p>entonces deben cumplirse las ecuaciones de Cauchy–Riemann:</p>
+
+<h2>
+$$
+\frac{\partial \phi}{\partial x} = \frac{\partial \psi}{\partial y}, \qquad
+\frac{\partial \phi}{\partial y} = -\frac{\partial \psi}{\partial x}
+$$
+</h2>
+
+<p>Esto implica que el flujo irrotacional en 2D puede describirse completamente mediante funciones analíticas.</p>
+
+<br>
+
+<h2>Bernoulli para flujo irrotacional</h2>
+
+<p>A partir de la ecuación de Cauchy para el momentum y usando la irrotacionalidad se obtiene:</p>
+
+<h2>
+$$
+\frac{\partial \phi}{\partial t}
++ \frac{1}{2}|\mathbf{v}|^2 
++ \frac{p}{\rho}
++ gz = C(t)
+$$
+</h2>
+
+<p>Si el flujo es estacionario:</p>
+
+<h2>
+$$
+\frac{1}{2}|\mathbf{v}|^2 + \frac{p}{\rho} + gz = \text{constante}
+$$
+</h2>
+
+<p>Esta es la ecuación de Bernoulli válida <b>en todo el dominio del flujo</b>, no sólo a lo largo de una línea de corriente.</p>
+
+<br>
+
+<h2>Ejemplo matemático avanzado</h2>
+
+<p>Para flujo irrotacional alrededor de un cilindro:</p>
+
+<h2>
+$$
+\phi = U_\infty\left( r + \frac{a^2}{r} \right) \cos\theta
+$$
+</h2>
+
+<p>Velocidad radial:</p>
+
+<h2>
+$$
+v_r = U_\infty\left(1 - \frac{a^2}{r^2}\right)\cos\theta
+$$
+</h2>
+
+<p>Velocidad tangencial:</p>
+
+<h2>
+$$
+v_\theta = -U_\infty\left(1 + \frac{a^2}{r^2}\right)\sin\theta
+$$
+</h2>
+
+<p>Se verifica que:</p>
+
+<h2>
+$$ \nabla^2 \phi = 0, \qquad \nabla \times \mathbf{v} = 0 $$
+</h2>
+
+<p>Afirmando que el flujo es completamente irrotacional.</p>
+
 
     <h2>Ecuación de Bernoulli</h2>
     <p>Para un fluido ideal, incompresible y estacionario:</p>
@@ -383,15 +532,213 @@
 
 <!-- 3. Ecuación de Conservación del Momentum (Ecuación de Cauchy) -->
 <div class="indice"> 
-    <h2 id="Concepto y Clasificación de la Manufactura Aditiva">3. Fluido viscoso incomprensible</h2>
-    <p>Un fluido viscoso incompresible es aquel que, aunque presenta viscosidad, su densidad permanece constante a lo largo del tiempo y del espacio, independientemente de las fuerzas externas o de los cambios de presión. Esto significa que el volumen del fluido no varía con la presión</p>
-    <p>Los fluidos viscosos generan esfuerzos cortantes proporcionales a la tasa de deformación. Para un fluido newtoniano:</p>
-    <h2>
-     $$
-      \tau_{ij} = 2 \mu D_{ij}
-      $$
-    </h2>
-    <p>donde $$\ D_{ij} $$ es el tensor de tasas de deformación</p>
+    <h2 id="Concepto y Clasificación de la Manufactura Aditiva">4. Fluido viscoso incomprensible</h2>
+
+<p>
+Un <b>fluido viscoso incomprensible</b> es aquel cuya densidad 
+permanece constante en el tiempo y el espacio 
+(<i>∂ρ/∂t = 0</i> y <i>∇ρ = 0</i>). 
+Esto implica que el volumen del fluido no cambia a pesar de las variaciones de presión. 
+Los efectos viscosos introducen resistencia interna al movimiento, generando 
+esfuerzos cortantes cuando existen gradientes de velocidad.
+</p>
+
+<p>
+Para un fluido incompresible, la ecuación de continuidad se reduce a:
+</p>
+
+<h2>
+$$
+\nabla \cdot \mathbf{v} = 0
+$$
+</h2>
+
+<p>
+Cuando además el fluido es <b>newtoniano</b>, los esfuerzos cortantes son proporcionales linealmente a la 
+tasa de deformación. El comportamiento mecánico del fluido se expresa mediante la 
+relación constitutiva de Cauchy–Newton:
+</p>
+
+<h2>
+$$
+\tau_{ij} = 2 \mu \, D_{ij}
+$$
+</h2>
+
+<p>
+donde <b>μ</b> es la viscosidad dinámica, y 
+<b>D<sub>ij</sub></b> es el tensor de tasas de deformación, definido como:
+</p>
+
+<h2>
+$$
+D_{ij} = \frac{1}{2} \left( 
+\frac{\partial v_i}{\partial x_j} + 
+\frac{\partial v_j}{\partial x_i}
+\right)
+$$
+</h2>
+
+<p>
+Este tensor mide la rapidez con la que se deforma un elemento fluido sin incluir rotación.
+</p>
+
+<!-- Desarrollo matemático adicional -->
+<h2>Desarrollo matemático</h2>
+
+<p>
+En un fluido viscoso incompresible, el <b>tensor de esfuerzos total</b> está compuesto por:
+</p>
+
+<h2>
+$$
+\sigma_{ij} = -p \, \delta_{ij} + \tau_{ij}
+$$
+</h2>
+
+<p>
+donde:
+</p>
+<ul>
+  <li><b>p</b> = presión termodinámica</li>
+  <li><b>δ<sub>ij</sub></b> = delta de Kronecker</li>
+  <li><b>τ<sub>ij</sub></b> = componente viscoso</li>
+</ul>
+
+<p>
+Sustituyendo la ley constitutiva:
+</p>
+
+<h2>
+$$
+\sigma_{ij} 
+= -p \, \delta_{ij} 
++ 2\mu 
+\left( 
+\frac{1}{2}\left( 
+\frac{\partial v_i}{\partial x_j} 
++ 
+\frac{\partial v_j}{\partial x_i}
+\right)
+\right)
+$$
+</h2>
+
+<p>
+lo cual se simplifica a:
+</p>
+
+<h2>
+$$
+\sigma_{ij} = -p \, \delta_{ij} 
++ 
+\mu \left(
+\frac{\partial v_i}{\partial x_j} 
++ 
+\frac{\partial v_j}{\partial x_i}
+\right)
+$$
+</h2>
+
+<p>
+Insertando este tensor dentro de la ecuación de conservación del momento lineal de Cauchy:
+</p>
+
+<h2>
+$$
+\rho \frac{D\mathbf{v}}{Dt}
+=
+\nabla \cdot \boldsymbol{\sigma}
++ \rho \mathbf{b}
+$$
+</h2>
+
+<p>y desarrollando el término divergencia del tensor de esfuerzos se obtiene:</p>
+
+<h2>
+$$
+\nabla \cdot (-p\mathbf{I}) = -\nabla p
+$$
+</h2>
+
+<p>
+y para la parte viscosa:
+</p>
+
+<h2>
+$$
+\nabla \cdot 
+\left[
+\mu \left(
+\nabla \mathbf{v} + 
+(\nabla \mathbf{v})^{T}
+\right)
+\right]
+=
+\mu \nabla^2 \mathbf{v}
+$$
+</h2>
+
+<p>
+(la igualdad es válida debido a la condición de incomprensibilidad).
+</p>
+
+<h2>Ecuaciones de Navier–Stokes para fluido viscoso incomprensible</h2>
+
+<h2>
+$$
+\rho 
+\frac{D\mathbf{v}}{Dt}
+=
+- \nabla p
++ 
+\mu \nabla^2 \mathbf{v}
++ 
+\rho \mathbf{b}
+$$
+</h2>
+
+<p>
+o expresada en forma expandida:
+</p>
+
+<h2>
+$$
+\rho \left(
+\frac{\partial \mathbf{v}}{\partial t}
++ 
+(\mathbf{v} \cdot \nabla)\mathbf{v}
+\right)
+=
+- \nabla p
++ 
+\mu \nabla^2 \mathbf{v}
++ 
+\rho \mathbf{b}
+$$
+</h2>
+
+<p>
+Estas ecuaciones describen completamente el movimiento de un fluido viscoso e incompresible, 
+considerando efectos convectivos, difusivos (viscosos) y de presión.
+</p>
+
+<p>
+Los términos representan:
+</p>
+
+<ul>
+  <li><b>ρ(∂v/∂t)</b>: aceleración local</li>
+  <li><b>ρ(v·∇)v</b>: aceleración convectiva</li>
+  <li><b>-∇p</b>: gradiente de presión</li>
+  <li><b>μ∇²v</b>: difusión viscosa de momento</li>
+  <li><b>ρb</b>: fuerzas de volumen (ej. gravedad)</li>
+</ul>
+
+<p>
+Estas ecuaciones son fundamentales en el modelado de flujos laminares, turbulentos, lubricación, aerodinámica interna, y fenómenos de transporte en ingeniería mecánica.
+</p>
+
 
     <h2>Ecuaciones de Navier-Stokes</h2>
     <p>Las ecuaciones de Navier-Stokes expresan matemáticamente la conservación del momento y la conservación de la masa para fluidos newtonianos. Se derivan de la aplicación de la segunda ley de Newton al movimiento de fluidos, considerando que la tensión en el fluido es la suma de un término viscoso (proporcional al gradiente de velocidad) y un término de presión. Esto permite describir el flujo viscoso de manera precisa.</p>
@@ -415,7 +762,7 @@
 
   <!-- 4. Conservación de la Energía (Primera Ley de la Termodinámica) -->
   <div class="indice"> 
-      <h2 id="Concepto y Clasificación de la Manufactura Aditiva">3. Ecuación de Conservación del Momentum (Ecuación de Cauchy)</h2>
+      <h2 id="Concepto y Clasificación de la Manufactura Aditiva">5. Conservación de la Energía (Primera Ley de la Termodinámica)</h2>
       <h2>
       $$
       \rho \frac{De}{Dt} = \boldsymbol{\sigma} : \nabla \vec{v} - \nabla \cdot \vec{q} + \rho r
@@ -437,7 +784,7 @@
 
   <!-- 5. Derivada Material (importante para todas) -->
   <div class="indice"> 
-      <h2 id="Concepto y Clasificación de la Manufactura Aditiva">3. Ecuación de Conservación del Momentum (Ecuación de Cauchy)</h2>
+      <h2 id="Concepto y Clasificación de la Manufactura Aditiva">6. Ecuación de Conservación del Momentum (Ecuación de Cauchy)</h2>
       <h2>
       $$
         \rho \frac{D\vec{v}}{Dt} = \nabla \cdot \boldsymbol{\sigma} + \rho \vec{b}
@@ -453,41 +800,108 @@
       </table> 
   </div>
 
-  <!-- Materiales Utilizados-->
   <div class="indice"> 
-      <h2 id="Materiales Utilizados">5. Materiales Utilizados</h2>
-      <p>La manufactura aditiva abarca una amplia gama de materiales según el proceso:</p>
-      <table>
-          <tr><th>Tipo de material</th><th>Ejemplos</th></tr>
-          <tr><td>Polímeros</td><td>PLA, ABS, PETG, nylon, TPU.</td></tr>
-          <tr><td>Metales</td><td>Acero inoxidable, titanio, inconel, aluminio.</td></tr>
-          <tr><td>Cerámicos</td><td>Zirconia, alúmina.</td></tr>
-          <tr><td>compuestos</td><td>Filamentos reforzados con fibra de carbono o vidrio.</td></tr>
-      </table> 
+      <h2 id="Concepto y Clasificación de la Manufactura Aditiva">7. Problema: Flujo viscoso incompresible en tubería</h2>
+      <div class="exercise-block">
+  <h2></h2>
+
+  <p>
+    Un fluido viscoso e <b>incompresible</b> es conducido a través de un tubo recto y horizontal de diámetro interno 
+    <b>d = 40 mm</b>, bajo flujo laminar totalmente desarrollado.  
+    La velocidad axial del fluido está dada por el perfil parabólico:
+  </p>
+
+  <h3>
+    $$ v_z(r) = V_{max}\left(1 - \frac{r^2}{R^2}\right) $$
+  </h3>
+
+  <p>
+    Donde: <br>
+    • \( R = \frac{d}{2} = 0.02 \, m \) <br>
+    • \( V_{max} = 2.0 \, m/s \) <br>
+    • El fluido tiene viscosidad dinámica: \( \mu = 0.25 \, Pa·s \)
+  </p>
+
+  <hr>
+
+  <!-- INCISO 1 -->
+  <h2>1) Cálculo de la tasa de deformación \(D_{ij}\)</h2>
+
+  <p>
+    Para flujo en tubería, la velocidad solo tiene componente axial:
+  </p>
+
+  <h3>$$ \vec{v} = (0,0,v_z(r)) $$</h3>
+
+  <p>
+    La única componente no nula del tensor de deformación es:
+  </p>
+
+  <h3>$$ D_{rz} = D_{zr} = \frac{1}{2}\frac{\partial v_z}{\partial r} $$</h3>
+
+  <p>Obtenemos la derivada:</p>
+
+  <h3>
+    $$ v_z(r)=V_{max}\left(1-\frac{r^2}{R^2}\right) $$
+    $$ \frac{\partial v_z}{\partial r} = -V_{max}\left(\frac{2r}{R^2}\right) $$
+  </h3>
+
+  <p>Entonces:</p>
+
+  <h3>
+    $$ D_{rz} = -\frac{V_{max}}{R^2}r $$
+  </h3>
+
+  <p>
+    Sustituyendo <br>
+    \( R = 0.02 \, m \)  
+  </p>
+
+  <h3>
+    $$ D_{rz}(r) = -\frac{2.0}{(0.02)^2}r = -5000r \quad [1/s] $$
+  </h3>
+
+  <hr>
+
+  <!-- INCISO 2 -->
+  <h2>2) Cálculo del esfuerzo cortante \(\tau_{rz}\)</h2>
+
+  <p>
+    Para un fluido Newtoniano, la ley constitutiva es:
+  </p>
+
+  <h3>$$ \tau_{ij} = 2\mu D_{ij} $$</h3>
+
+  <p>
+    Para este flujo:
+  </p>
+
+  <h3>$$ \tau_{rz} = 2\mu D_{rz} $$</h3>
+
+  <p>Sustituimos valores:</p>
+
+  <h3>
+    $$ \tau_{rz} = 2(0.25)(-5000r) $$
+    $$ \tau_{rz} = -2500r \quad [Pa] $$
+  </h3>
+
+  <p>
+    En la pared del tubo (r = R = 0.02 m):
+  </p>
+
+  <h3>
+    $$ \tau_{rz}(R) = -2500(0.02) = -50 \, Pa $$
+  </h3>
+
+  <p><b>Resultado final:</b></p>
+
+  <h3>
+    $$ \tau_{rz}(r) = -2500r \ [Pa] $$
+  </h3>
+
+</div>
+
   </div>
-
-
-
-  <!-- TABLA -->
-  <div class="indice">  
-      <h2 id="ventajas">6. Ventajas y Limitaciones</h2>
-      <p> Como vimos anteriormente, existen actualmente una multitud de tecnologías de fabricación aditiva, las cuales tienen muchas ventajas, lo que abre una ventana de oportunidades para la ingeniería.:</p>
-      <p>Por el momento las cosas no son tan ideales como aparentan, puesto que los procesos de manufactura aditiva tambien tienen una serie de limitaciones las cuales deben ser consideradas, si se elige alguno de estos métodos. </p>
-
-      <table>
-          <tr><th>Ventajas</th><th>Limitaciones</th></tr>
-          <tr><td>Geometrías complejas sin costo adicional</td><td>Velocidad de fabricación relativamente baja</td></tr>
-          <tr><td>Personalización total</td><td>Limitación en materiales disponibles</td></tr>
-          <tr><td>Reducción de desperdicio</td><td>Acabados superficiales requieren post-proceso</td></tr>
-          <tr><td>Prototipado rápido</td><td>Costos altos en impresoras industriales</td></tr>
-      </table>
-  </div>
-
-  <!-- APLICACIONES -->
-  <div class="indice">  
-      <h2 id="aplicaciones">7. Aplicaciones</h2>
-      
-  </div> 
 
   <!-- CUESTIONARIO -->
   <div class="indice">  
@@ -500,6 +914,8 @@
       <p id="quizResult"></p>
       </details>
   </div>
+
+  
 
   <!-- EJERCICIO 2 -->
   <div class="indice">
