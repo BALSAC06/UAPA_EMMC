@@ -1071,12 +1071,12 @@ function prevTec(){ iTec=(iTec-1+Tec.length)%Tec.length; updateTec(); }
 // CUESTIONARIO
 // ----------------------
 const preguntas = [
-    {p:"¿Qué representan las ecuaciones constitutivas en la mecánica de fluidos?", o:["Relaciones entre esfuerzo y deformación","Condiciones de frontera","Propiedades termodinámicas"], r:2},
-    {p:"Un fluido ideal se caracteriza por:", o:["No tener viscosidad","Tener alta viscosidad","Ser compresible siempre"], r:1},
+    {p:"¿Qué representan las ecuaciones constitutivas en la mecánica de fluidos?", o:["Relaciones entre esfuerzo y deformación","Condiciones de frontera","Propiedades termodinámicas"], r:0},
+    {p:"Un fluido ideal se caracteriza por:", o:["No tener viscosidad","Tener alta viscosidad","Ser compresible siempre"], r:0},
     {p:"Las ecuaciones que describen el movimiento de un fluido ideal son:", o:["Ecuaciones de Euler","Ecuaciones de Navier-Stokes","Ecuación de Bernoulli"], r:0},
-    {p:"El flujo irrotacional se define porque:", o:["La vorticidad es cero","La densidad es constante","La temperatura no cambia"], r:1},
-    {p:"La ecuación de Bernoulli aplica para:", o:["Flujo ideal estacionario","Flujo viscoso turbulento","Flujos con fuerte disipación"], r:2},
-    {p:"Un fluido viscoso incomprensible obedece:", o:["Ecuaciones de Navier-Stokes","Ecuaciones de Euler","Ley de Fourier"], r:2},
+    {p:"El flujo irrotacional se define porque:", o:["La vorticidad es cero","La densidad es constante","La temperatura no cambia"], r:0},
+    {p:"La ecuación de Bernoulli aplica para:", o:["Flujo ideal estacionario","Flujo viscoso turbulento","Flujos con fuerte disipación"], r:0},
+    {p:"Un fluido viscoso incomprensible obedece:", o:["Ecuaciones de Navier-Stokes","Ecuaciones de Euler","Ley de Fourier"], r:0},
     {p:"La viscosidad en un fluido genera:", o:["Esfuerzos cortantes","Mayor presión","Compresibilidad"], r:0},
     {p:"Navier-Stokes incluye el efecto de:", o:["Viscosidad","Ionización","Radiación térmica"], r:0},
     {p:"El principio de acción local en las ecuaciones constitutivas establece que:", o:["El esfuerzo depende solo de propiedades locales","El esfuerzo depende de toda la historia del material","El esfuerzo depende del campo térmico"], r:0},
@@ -1171,4 +1171,5 @@ function checkAnswer(optionElement, index) {
 <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </body>
 </html>
+
 
